@@ -1,0 +1,13 @@
+<h1><%=@Book.title%></h1>
+
+<% @Summaries.each do |summary| %>
+<div>
+	<h2>Chapter <%= summary.chapter_number %>: <%= summary.chapter_title %></h2>
+	<p><%= summary.body %></p>
+	<%= link_to "Edit", edit_book_summary_path(@Book,summary) %>
+	<%=link_to "Delete", book_summary_path(@Book,summary), method: :delete,data: {confirm: "Really delete the article?"} %>
+</div>
+<% end %>
+<%= link_to("Back", books_path) %>
+
+<%= link_to "Add new chapter summary", new_book_summary_path(@Book) %>
